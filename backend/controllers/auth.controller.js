@@ -1,11 +1,12 @@
 import User from "../models/user.model.js";
 import bcryptjs from 'bcryptjs';
+import { errorHandler } from "../utils/error.js";
 
-export const signup = async (req,res) => {
+export const signup = async (req,res,next) => {
     const {username,email,password} = req.body;
-    if(!username || !email || !password || username ==='' ||
-    email===""|| password===""){
-        return res.status(400).json({msg:"Please fill all fields"});
+    if(!username || !email || !password || username ==='' || email==="" || password==="" ){
+        //return res.status(400).json({msg:"Please fill all fields"});
+        next(errorHandler(400,"Please fill all fields"));
     }
     const hashedPassword = bcryptjs.hashSync(password,10);
     const newUser = new User({username, email, password:hashedPassword});
@@ -13,7 +14,8 @@ export const signup = async (req,res) => {
         await newUser.save();
         res.status(200).json({message: "Signup Successful"});
     } catch (error) {
-        res.status(400).json({message:error.message})
+        //res.status(400).json({message:error.message})  // Instead of this now we use middleware
+        next(error)
     }
     
 

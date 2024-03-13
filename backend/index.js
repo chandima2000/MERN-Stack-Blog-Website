@@ -19,15 +19,25 @@ const app = express();
 //Therefore we need to allow this.
 app.use(express.json());
 
+app.listen(3000, () => {
+    console.log("Server is running on port 3000");
+});
+
 
 //Register the test API route.
 //Normally we use "/api/user/***" method to create the route.
 app.use('/api/user',userRoutes);
 
-app.use('/api/auth',authRoutes)
+app.use('/api/auth',authRoutes);
 
-app.listen(3000, () => {
-    console.log("Server is running on port 3000");
+app.use((err,req,res,next) => {
+    const statusCode = err.statusCode || 500;
+    const message = err.message || "Internal Server Error";
+    res.status(statusCode).json({
+         success: false,
+         statusCode,
+         message
+    })
 });
 
 
