@@ -8,13 +8,13 @@ import {FaMoon} from 'react-icons/fa';
 export default function Header() {
     const path = useLocation().pathname;
   return (
-    <Navbar className='border-b-2'>
+    <Navbar className='border-b-2 bg-gray-800'>
         <Link to = '/' 
               className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'>
             <span 
               className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white '
             >Tech</span>
-            Trekker
+            <span className='text-red-600 font-bold'>Trekker</span>
         </Link>
             <TextInput
             type = 'text'
@@ -35,19 +35,19 @@ export default function Header() {
                         Sign In
                     </Button>
                 </Link>
-                <Navbar.Toggle/>
+                <Navbar.Toggle className='text-red-600'/>
         </div>
-        <Navbar.Collapse>
+        <Navbar.Collapse >
                     <Navbar.Link active={path === "/"} as={'div'}>
-                        <Link to = "/">Home</Link>
+                        <Link to = "/" className='text-white text-xl hover:text-red-600'>Home</Link>
                     </Navbar.Link>
 
                     <Navbar.Link active={path === "/about"} as={'div'}>
-                        <Link to = "/about">About</Link>
+                        <Link to = "/about" className='text-white text-xl hover:text-red-600'>About</Link>
                     </Navbar.Link>
 
                     <Navbar.Link active={path === "/projects"} as={'div'}>
-                        <Link to = "/projects">Projects</Link>
+                        <Link to = "/projects" className='text-white text-xl hover:text-red-600'>Projects</Link>
                     </Navbar.Link>
         </Navbar.Collapse>
     </Navbar>
