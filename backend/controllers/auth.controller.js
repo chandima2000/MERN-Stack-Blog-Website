@@ -44,12 +44,12 @@ export const signin = async (req,res,next) => {
         process.env.JWT_SECRET,{expiresIn:'7d'}
         );
 
-        const {password:pass, ...rest} = validUser._doc;
+        const {password:pass, ...rest} = validUser._doc; // Remove the password from the response and rest of the data is set to the 'rest'.
 
         res.status(200).cookie('access_token',
                     token,
                     {httpOnly:true}
-            ).json(rest);
+            ).json(rest); // The 'rest' is go to the frontend as payload. It helps to the Redux handle the state
 
     } catch (error) {
         next(error)
