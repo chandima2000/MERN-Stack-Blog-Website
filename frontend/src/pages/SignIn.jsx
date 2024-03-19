@@ -10,6 +10,9 @@ import { //These are kind of reducers
 from '../redux/user/userSlice';
 import {useDispatch, useSelector} from 'react-redux';  // In order to use the above reducers we have to use 'dispatch'.
 //In order to access the Global state we have to use 'useSelector'.
+import OAuth from '../components/OAuth';
+
+
 
 export default function SignIn() {
 
@@ -96,10 +99,12 @@ export default function SignIn() {
             </div>
             <Button gradientDuoTone='purpleToPink' type='submit' disabled={loading} className='p-2'> {/*At the Loading time the Button is Disabled*/}
               {loading ? 
-                (<><Spinner size='sm'/> <span className='pl-3'>Loading ...</span></>) : 
-                "Sign In"
+                (<><Spinner size='sm'/> <span className='pl-3 text-lg'>Loading ...</span></>) : 
+                <div className="text-lg">Sign In</div>
               }
             </Button>
+            <p className='text-center'>Or</p>
+            <OAuth/>
           </form>
           <div className="flex gap-2 text-sm mt-5">
             <span>Don't have an account?</span>
