@@ -52,10 +52,10 @@ export default function Header() {
                         <span className='block text-sm font-medium truncate'>{currentUser.email}</span>
                         </Dropdown.Header>
                         <Link to={'/dashboard?tab=profile'}>
-                        <Dropdown.Item className='hover:bg-red-500 font-bold'>Profile</Dropdown.Item>
+                        <Dropdown.Item className='dark:hover:bg-red-600 hover:bg-red-500 font-bold'>Profile</Dropdown.Item>
                         </Link>
                         <Dropdown.Divider />
-                        <Dropdown.Item className='hover:bg-red-500 font-bold'>Sign out</Dropdown.Item>
+                        <Dropdown.Item className='dark:hover:bg-red-600 hover:bg-red-500 font-bold'>Sign out</Dropdown.Item>
                     </Dropdown>
                  ) : (
                     <Link to='/sign-in'>
