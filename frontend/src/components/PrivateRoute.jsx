@@ -9,6 +9,8 @@ export default function PrivateRoute() {
   return (
 
     currentUser ? <Outlet/> : <Navigate to = 'sign-in'/>
-
+    //If currentUser is exist, then render the child element (<Dashboard/>)
+    //otherwise redirect to the signIn page.
+    //The <Outlet/> is used to render the Child components
   )
 }
