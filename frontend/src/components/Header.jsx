@@ -2,9 +2,10 @@ import React from 'react'
 import {Avatar,Button,Dropdown, Navbar,TextInput} from 'flowbite-react';
 import {Link, useLocation } from 'react-router-dom';
 import {AiOutlineSearch} from 'react-icons/ai';
-import {FaMoon, FaSun} from 'react-icons/fa';
+import {FaMoon} from 'react-icons/fa';
 import {useSelector,useDispatch} from 'react-redux';
 import {toggleTheme} from '../redux/theme/themeSlice';
+import { FaRegSun } from "react-icons/fa6";
 
 export default function Header() {
     const path = useLocation().pathname;
@@ -31,9 +32,12 @@ export default function Header() {
         </Button>
 
         <div className="flex gap-3 md:order-2">
-                <Button className='w-12 h-10 hidden sm:inline' color='gray'
-                     onClick={() => dispatch(toggleTheme())} >
-                        {theme ==='light' ? <FaSun/> :  <FaMoon/>}
+                <Button
+                    className='w-12 h-10 sm:inline flex items-center justify-center bg-gray-200 rounded-full hover:bg-gray-300'
+                    color='gray'
+                    onClick={() => dispatch(toggleTheme())}
+                >
+                    {theme === 'light' ? <FaRegSun/> : <FaMoon />}
                 </Button>
                 {currentUser ? (
                     <Dropdown
