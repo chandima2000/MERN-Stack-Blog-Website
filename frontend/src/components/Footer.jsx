@@ -20,7 +20,7 @@ export default function FooterCom() {
           </Footer.LinkGroup>
         </div>
         <Footer.Divider />
-        <Footer.Copyright href="#" by="TechTrekker™" year={2024} className='text-white' />
+        <Footer.Copyright href="#" by="TechTrekker" year={2024} className='text-white' />
       </div>
     </Footer>
   );
